@@ -1,5 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import Home from './pages/Home';
+
+
+ReactDOM.render(
+    <BrowserRouter>
+        <Switch>
+            <Route path='/' component={Home} />
+        </Switch>
+    </BrowserRouter>, 
+    document.getElementById('root')
+);
