@@ -1,20 +1,25 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {Container, Menu, Dropdown, Image} from 'semantic-ui-react';
 
-const MenuBar = (props) => (
+import ProductDb from '../api';
+
+const MenuBar = () => (
     <div>
         <Menu fixed='top' inverted>
             <Container>
                 <Menu.Item>
                     <Image size='small' src='https://texadasoftware.com/wp-content/uploads/2018/02/Texada_logo_ribbon_cmyk-e1518809325461.png' style={{marginRight: '1em'}}/>
                 </Menu.Item>
-                <Menu.Item as='a'>Home</Menu.Item>
+                <Menu.Item as='a'><Link to={'/'}>Home</Link></Menu.Item>
                 <Dropdown item simple text='Products'>
-                    <Dropdown.Menu>
+                    <Dropdown.Menu inverted>
                         {
-                            props.products.map((product) => {
-                                return <Dropdown.Item key={product.id}>{product.description}</Dropdown.Item>
-                            })
+                            ProductDb.all().map((product) => (
+                                <Dropdown.Item as='a' key={product.id}>
+                                    <Link to={`/${product.id}`}>{product.description}</Link>
+                                </Dropdown.Item>)
+                            )
                         }
                     </Dropdown.Menu>
                 </Dropdown>

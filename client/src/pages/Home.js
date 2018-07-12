@@ -23,14 +23,13 @@ class Home extends Component {
     this.setState({products: ProductDB.getFilterBy(filterStr)});
   }
 
-  
   render() {
     return (
       <div>
-        <MenuBar products={this.state.products}/>
+        <MenuBar/>
         <Container text textAlign='center' style={{marginTop: '7em'}}>
-          <Header as='h1'>In Transit</Header>
-          <p>There are {this.state.inTransit} products in transit </p>
+          <Header as='h1'>In Transit Overview</Header>
+          <p>There are {this.state.inTransit} products currently in transit</p>
 
           <SearchBar onSearchChange={i => this.onSearchChange(i)}/>
           <ProductsTable products={this.state.products} length={this.state.products.length}/>

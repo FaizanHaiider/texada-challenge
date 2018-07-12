@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {Table, Icon, Container} from 'semantic-ui-react';
 
 const ProductsTable = (props) => (
@@ -25,7 +26,9 @@ const ProductsTable = (props) => (
                                 <Table.Cell>{product.id}</Table.Cell>
                                 <Table.Cell>{product.description}</Table.Cell>
                                 <Table.Cell>api todo</Table.Cell>
-                                <Table.Cell><Icon name='options'/></Table.Cell>
+                                <Table.Cell>
+                                    <Link to={`/${product.id}`}><Icon name='options'/></Link>
+                                </Table.Cell>
                             </Table.Row>
                         );
                     })
