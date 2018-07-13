@@ -49,7 +49,7 @@ const ProductDB = {
         const isProduct = prod => prod.id === id;
         return this.products.find(isProduct);
     },
-    updateProduct: function(id, travelPath) {
+    updateTravelPath: function(id, travelPath) {
         const prod = this.get(id);
         const updatedTravelPath = prod.travelPath.slice();
         updatedTravelPath.push(travelPath);

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Header} from 'semantic-ui-react';
+import {Container} from 'semantic-ui-react';
 
 import ProductDb from '../api';
 import MenuBar from '../components/MenuBar';
@@ -15,36 +15,12 @@ class Product extends Component {
         }
     }
 
-    // componentWillMount(props) {
-    //     let productId = 0;
-    //     try {
-    //         productId = parseInt(props.match.params.id);
-    //     } catch(NumberFormatException) {
-    //         productId = -1;
-    //     }
-        
-    //     if(productId > -1) {
-    //         this.setState({
-    //             productId,
-    //             product: ProductDb.get(productId)
-    //         })
-    //     } else {
-    //         this.setState({
-    //             productId
-    //         })
-    //     }
-    // }
-
     render() {
         return(
             <div>
                 <MenuBar/>
                 <Container text textAlign='center' style={{marginTop: '7em'}}>
-                    {
-                        this.state.productId === -1 ?
-                            <Header as='h2'>Invalid Product ID</Header> :
-                            <ViewProduct product={this.state.product}/>
-                    }
+                    <ViewProduct product={this.state.product}/>
                 </Container>
             </div>
         );

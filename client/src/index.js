@@ -8,8 +8,8 @@ import Product from './pages/Product';
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
+            <Route path='/:id' exact component={Product}/>
             <Route path='/' exact component={Home}/>
-            <Route path='/:id' exact strict component={Product}/>
         </Switch>
     </BrowserRouter>, 
     document.getElementById('root')
