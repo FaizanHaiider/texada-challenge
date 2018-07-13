@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import {Header, Grid, Image, Container, Table} from 'semantic-ui-react';
 import ProductDB from '../api';
+import SearchBar from './SearchBar';
 
 class ViewProduct extends Component {
     constructor(props) {
         super(props);
         this.state = {
             product: props.product,
-            locations: []
+            locations: [],
+            travelPath: props.product.travelPath
         }
     }
 
@@ -23,10 +25,23 @@ class ViewProduct extends Component {
         })
     }
 
+    onSearchChange(e) {
+        if(e.target.value.match('([0-9]{2}\/){2}[0-9]{4}\-([0-9]{2}\/){2}[0-9]{4}')) {
+            this.setState({
+                travelPath: ProductDB.getByDate(e.target.value, this.state.product.id)
+            })
+        } else {
+            this.setState({
+                travelPath: this.state.product.travelPath
+            })
+        }
+    }
+
+
     render() {
         return(
             <div>
-                <Grid columns={2} divided>
+                <Grid columns={2} divided style={{marginBottom: '2em'}}>
                     <Grid.Row>
                         <Grid.Column>
                             <Image 
@@ -39,6 +54,9 @@ class ViewProduct extends Component {
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
+                
+                <SearchBar onSearchChange={i => this.onSearchChange(i)}/>
+
                 <Container style={{marginTop: '2em'}}>
                     <Table celled>
                         <Table.Header>
@@ -49,7 +67,7 @@ class ViewProduct extends Component {
                         </Table.Header>
                         <Table.Body>
                             {
-                            this.props.product.travelPath.reverse().map((location, index) => {
+                            this.state.travelPath.reverse().map((location, index) => {
                                 return (
                                     <Table.Row key={index}>
                                         <Table.Cell>

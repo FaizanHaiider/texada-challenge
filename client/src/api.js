@@ -1,5 +1,3 @@
-import { FormField } from "semantic-ui-react";
-
 const ProductDB = {
     products: [
         {
@@ -91,7 +89,23 @@ const ProductDB = {
     getLatestUpdate: function(id) {
         const latestIndex = this.get(id).travelPath.length-1;
         return this.getFormattedDateTime(this.get(id).travelPath[latestIndex].datetime)
+    },
+    getByDate: function(filterStr, id) {
+        console.log(filterStr);
+        let strSplit = filterStr.split('-');
+        let dateS = strSplit[0];
+        let dateE = strSplit[1];
+        let dateStart = new Date(dateS);
+        let dateEnd = new Date(dateE);
+
+        let filteredTravelPath = this.get(id).travelPath.filter((path) => {
+            let pathDT = new Date(path.datetime);
+            return pathDT > dateStart && pathDT < dateEnd
+        });
+        console.log(filteredTravelPath)
+        return filteredTravelPath;
     }
+
 }
 
 export default ProductDB;
