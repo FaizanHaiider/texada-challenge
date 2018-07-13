@@ -10,9 +10,9 @@ ReactDOM.render(
     <BrowserRouter>
         <Switch>
             <Route path='/' exact component={Home}/>
+            {/* <Route path='/update' exact component={ProductActions}/>
+            <Route path='/udpate/:id' exact component={ProductActions}/> */}
             <Route path='/:id' exact component={Product}/>
-            <Route path='/udpate/:id' exact component={ProductActions}/>
-            <Route path='/update' exact component={ProductActions}/>
         </Switch>
     </BrowserRouter>, 
     document.getElementById('root')

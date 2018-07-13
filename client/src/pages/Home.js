@@ -20,7 +20,16 @@ class Home extends Component {
   }
 
   onSearchChange(filterStr) {
-    this.setState({products: ProductDB.getFilterBy(filterStr)});
+    if(filterStr.target.value.includes(',')) {
+      this.setState({
+        products: ProductDB.getMultiFilter(this.state.products, filterStr.target.value)
+      })
+    } else {
+      this.setState({
+        products: ProductDB.getFilterBy(filterStr.target.value)
+      });
+    }
+    
   }
 
   render() {

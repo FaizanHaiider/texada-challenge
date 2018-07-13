@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Table, Icon, Container} from 'semantic-ui-react';
+import ProductDB from '../api';
 
 const ProductsTable = (props) => (
     <Container>
@@ -25,7 +26,7 @@ const ProductsTable = (props) => (
                             <Table.Row key={product.id}>
                                 <Table.Cell>{product.id}</Table.Cell>
                                 <Table.Cell>{product.description}</Table.Cell>
-                                <Table.Cell>api todo</Table.Cell>
+                                <Table.Cell>{ProductDB.getLatestUpdate(product.id)}</Table.Cell>
                                 <Table.Cell>
                                     <Link to={`/${product.id}`}><Icon name='options'/></Link>
                                 </Table.Cell>

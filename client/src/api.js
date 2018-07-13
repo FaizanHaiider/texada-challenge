@@ -1,3 +1,5 @@
+import { FormField } from "semantic-ui-react";
+
 const ProductDB = {
     products: [
         {
@@ -55,19 +57,40 @@ const ProductDB = {
         updatedTravelPath.push(travelPath);
         prod.travelPath = updatedTravelPath;
     },
+    getMultiFilter: function(currentArr, filterStr) {
+        filterStr = filterStr.split(',');
+        for(var i=1; i<filterStr.length; i++) {
+            if(filterStr[i].length === 0) continue;
+            this.getFilterBy(filterStr[i]).forEach((element) => {
+                if(currentArr.indexOf(element) === -1) currentArr.push(element) 
+            })
+        }
+        console.log(currentArr);
+        return currentArr;
+    },
     getFilterBy: function(filterStr) {
         let filteredDb = this.products;
         filteredDb = filteredDb.filter((product) => {
             return product.description.toLowerCase().search(
-                filterStr.target.value.toLowerCase()) !== -1;
+                filterStr.toLowerCase()) !== -1;
             }
         );
+
         return filteredDb;
     },
     addProduct: function(product) {
         const currentDb = this.products;
         const updatedDb = currentDb.push(product);
         this.products = updatedDb;
+    },
+    getFormattedDateTime: function(datetime) {
+        const newDateTime = new Date(datetime).toLocaleString().split(',');
+        const formattedTime = newDateTime[1].split(':')
+        return newDateTime[0] + ' ('+ formattedTime[0] + ':' + formattedTime[2]+')';
+    },
+    getLatestUpdate: function(id) {
+        const latestIndex = this.get(id).travelPath.length-1;
+        return this.getFormattedDateTime(this.get(id).travelPath[latestIndex].datetime)
     }
 }
 
