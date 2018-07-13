@@ -5,7 +5,6 @@ import ProductDb from '../api';
 import MenuBar from '../components/MenuBar';
 import ViewProduct from '../components/ViewProduct';
 
-
 class Product extends Component {
     constructor(props) {
         super(props);

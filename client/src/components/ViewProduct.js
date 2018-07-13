@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Header, Grid, Image, Container, Table} from 'semantic-ui-react';
+import {Header, Grid, Image, Container, Table, Icon, Button} from 'semantic-ui-react';
 
 class ViewProduct extends Component {
     constructor(props) {
@@ -7,6 +7,7 @@ class ViewProduct extends Component {
         this.state = {
             product: props.product,
             locations: [],
+            editProduct: false
         }
     }
 
@@ -63,8 +64,7 @@ class ViewProduct extends Component {
                                         <Table.Cell>{this.state.locations[index]}</Table.Cell>
                                     </Table.Row>
                                 );
-                            })
-                            }
+                            })}
                         </Table.Body>
                     </Table>
                 </Container>
