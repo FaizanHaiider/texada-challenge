@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container, Header } from 'semantic-ui-react';
 
 import ProductDB  from '../api'; 
-import MenuBar from '../components/MenuBar';
 import SearchBar from '../components/SearchBar';
 import ProductsTable from '../components/ProductsTable';
 
@@ -35,8 +34,8 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <MenuBar/>
         <Container text textAlign='center' style={{marginTop: '7em'}}>
+
           <Header as='h1'>In Transit Overview</Header>
           <p>There are {this.state.inTransit} products currently in transit</p>
 

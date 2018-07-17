@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Header, Grid, Image, Container, Table} from 'semantic-ui-react';
 import ProductDB from '../api';
 import SearchBar from './SearchBar';
+import MenuBar from './MenuBar';
 
 class ViewProduct extends Component {
     constructor(props) {
@@ -41,6 +42,7 @@ class ViewProduct extends Component {
     render() {
         return(
             <div>
+                <MenuBar/>
                 <Grid columns={2} divided style={{marginBottom: '2em'}}>
                     <Grid.Row>
                         <Grid.Column>

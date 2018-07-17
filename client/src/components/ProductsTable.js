@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Table, Icon, Container} from 'semantic-ui-react';
+
 import ProductDB from '../api';
 
 const ProductsTable = (props) => (
