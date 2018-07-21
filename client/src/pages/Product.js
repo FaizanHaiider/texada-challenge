@@ -1,38 +1,22 @@
-import React, {Component} from 'react';
-import {Container} from 'semantic-ui-react';
+import React from 'react';
 
 import ProductDb from '../api';
-import MenuBar from '../components/MenuBar';
 import ViewProduct from '../components/ViewProduct';
 
-class Product extends Component {
-    constructor(props) {
-        super(props);
-        console.log(props);
-        this.state = {
-            productId: -1,
-            product: []
-        }
-    }
+const Product = (props) => {
 
-    componentWillMount() {
-        const id = parseInt(this.props.match.params.id, 10)
-        this.setState({
-            productId: id,
-            product: ProductDb.get(id)
-        })
-    }
+    const getProdId = () => (parseInt(props.match.params.id, 10));
+    const getProd = () => (ProductDb.get(getProdId()));
+    const getTravelPath = () => (getProd().travelPath)
 
-    render() {
-        return(
-            <div>
-                <MenuBar/>
-                <Container text textAlign='center' style={{marginTop: '7em'}}>
-                    <ViewProduct product={this.state.product}/>
-                </Container>
-            </div>
-        );
-    }
+    return(
+        <ViewProduct 
+            prodId={getProdId()}
+            product={getProd()}
+            travelPath={getTravelPath()}
+        />
+    );
+
 }
 
 export default Product;

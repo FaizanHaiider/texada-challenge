@@ -29,7 +29,7 @@ const ProductsTable = (props) => (
                                 <Table.Cell>{product.description}</Table.Cell>
                                 <Table.Cell>{ProductDB.getLatestUpdate(product.id)}</Table.Cell>
                                 <Table.Cell>
-                                    <Link to={`/${product.id}`}><Icon name='options'/></Link>
+                                    <Link to={`/products/${product.id}`}><Icon name='options'/></Link>
                                 </Table.Cell>
                             </Table.Row>
                         );

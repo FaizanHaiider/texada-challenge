@@ -102,7 +102,6 @@ const ProductDB = {
             let pathDT = new Date(path.datetime);
             return pathDT > dateStart && pathDT < dateEnd
         });
-        console.log(filteredTravelPath)
         return filteredTravelPath;
     }
 

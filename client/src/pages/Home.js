@@ -6,11 +6,14 @@ import SearchBar from '../components/SearchBar';
 import ProductsTable from '../components/ProductsTable';
 
 class Home extends Component {
-  state = {
-    inTransit: 0,
-    products: []
-  };
-
+  constructor() {
+    super();
+    this.state = {
+      inTransit: null,
+      products: null
+    };
+  }
+  
   componentWillMount() {
     this.setState({
       inTransit: ProductDB.getLength(),
@@ -27,8 +30,7 @@ class Home extends Component {
       this.setState({
         products: ProductDB.getFilterBy(filterStr.target.value)
       });
-    }
-    
+    } 
   }
 
   render() {

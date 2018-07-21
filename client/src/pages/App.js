@@ -1,23 +1,22 @@
 import React, {Component}from 'react';
 import {BrowserRouter as Router,
         Route, 
-        Switch 
+        Switch
 } from 'react-router-dom';
 
 import Home from './Home';
-import MenuBar from '../components/MenuBar';
 import Product from './Product';
-
+import MenuBar from '../components/MenuBar';
 
 class App extends Component {
     render() {
         return(
             <Router>
                 <div>
-                    <MenuBar /> 
+                    <MenuBar />
                     <Switch>
                         <Route exact path='/' component={Home}/>
-                        <Route path='/:id' component={Product}/>
+                        <Route exact path='/:id' component={Product}/>
                     </Switch>
                 </div>
             </Router>
