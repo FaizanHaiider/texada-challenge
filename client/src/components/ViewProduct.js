@@ -4,9 +4,19 @@ import {Header, Grid, Image, Container, Table} from 'semantic-ui-react';
 import ProductDB from '../api';
 import SearchBar from './SearchBar';
 
+function style() {
+    return {
+        product: {marginTop: '7em'},
+        detail: {marginTop: '2em'}
+    }    
+}
+
 const ViewProduct = (props) => {
+    const styles = style();
+    const product = props.product;
+
     return(
-        <Container text textAlign='center' style={{marginTop: '7em'}}>
+        <Container text textAlign='center' style={styles.product}>
             <Grid columns={2} divided style={{marginBottom: '2em'}}>
                 <Grid.Row>
                     <Grid.Column>
@@ -15,15 +25,15 @@ const ViewProduct = (props) => {
                             size='medium'/>
                     </Grid.Column>
                     <Grid.Column>
-                        <Header style={{marginTop: '3em'}} as='h3'>Product ID: {props.product.id}</Header>
-                        <Header as='h3'>Product Name: {props.product.description}</Header>
+                        <Header style={{marginTop: '3em'}} as='h3'>Product ID: {product.id}</Header>
+                        <Header as='h3'>Product Name: {product.description}</Header>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
             
             {/* <SearchBar onSearchChange={i => props.onSearchChange(i)}/> */}
 
-            <Container style={{marginTop: '2em'}}>
+            <Container style={styles.detail}>
                 <Table celled>
                     <Table.Header>
                         <Table.Row>
@@ -33,7 +43,7 @@ const ViewProduct = (props) => {
                     </Table.Header>
                     <Table.Body>
                         {
-                        props.travelPath.reverse().map((location, index) => {
+                        product.travelPath.reverse().map((location, index) => {
                             return (
                                 <Table.Row key={index}>
                                     <Table.Cell>

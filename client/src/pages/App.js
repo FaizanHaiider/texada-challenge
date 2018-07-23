@@ -16,7 +16,7 @@ class App extends Component {
                     <MenuBar />
                     <Switch>
                         <Route exact path='/' component={Home}/>
-                        <Route exact path='/:id' component={Product}/>
+                        <Route path='/:id' component={Product}/>
                     </Switch>
                 </div>
             </Router>
